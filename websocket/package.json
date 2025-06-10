@@ -1,0 +1,74 @@
+{
+  "name": "@launch-pad/websocket",
+  "version": "0.0.1",
+  "private": true,
+  "scripts": {
+    "dev": "ts-node src/main.ts"
+  },
+  "nx": {
+    "targets": {
+      "build": {
+        "executor": "@nx/esbuild:esbuild",
+        "outputs": [
+          "{options.outputPath}"
+        ],
+        "defaultConfiguration": "production",
+        "options": {
+          "platform": "node",
+          "outputPath": "websocket/dist",
+          "format": [
+            "cjs"
+          ],
+          "bundle": false,
+          "main": "websocket/src/main.ts",
+          "tsConfig": "websocket/tsconfig.app.json",
+          "assets": [
+            "websocket/src/assets"
+          ],
+          "esbuildOptions": {
+            "sourcemap": true,
+            "outExtension": {
+              ".js": ".js"
+            }
+          }
+        },
+        "configurations": {
+          "development": {},
+          "production": {
+            "esbuildOptions": {
+              "sourcemap": false,
+              "outExtension": {
+                ".js": ".js"
+              }
+            }
+          }
+        }
+      },
+      "serve": {
+        "continuous": true,
+        "executor": "@nx/js:node",
+        "defaultConfiguration": "development",
+        "dependsOn": [
+          "build"
+        ],
+        "options": {
+          "buildTarget": "@launch-pad/websocket:build",
+          "runBuildTargetDependencies": false
+        },
+        "configurations": {
+          "development": {
+            "buildTarget": "@launch-pad/websocket:build:development"
+          },
+          "production": {
+            "buildTarget": "@launch-pad/websocket:build:production"
+          }
+        }
+      },
+      "test": {
+        "options": {
+          "passWithNoTests": true
+        }
+      }
+    }
+  }
+}
