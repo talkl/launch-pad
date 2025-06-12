@@ -4,7 +4,8 @@
   "license": "MIT",
   "scripts": {
     "prepare": "husky",
-    "dev": "nx run-many -t dev --all --parallel=true"
+    "dev": "nx run-many -t dev --all --parallel=true",
+    "test": "nx run-many -t test --all"
   },
   "lint-staged": {
     "*.{ts,tsx,js,jsx}": [
@@ -13,6 +14,7 @@
   },
   "private": true,
   "devDependencies": {
+    "@babel/preset-env": "^7.27.2",
     "@eslint/js": "^9.8.0",
     "@nx/esbuild": "21.1.2",
     "@nx/eslint": "21.1.2",
@@ -26,6 +28,7 @@
     "@swc/jest": "~0.2.36",
     "@types/jest": "^29.5.12",
     "@types/node": "~18.16.9",
+    "@types/ws": "^8.18.1",
     "esbuild": "^0.19.2",
     "eslint": "^9.8.0",
     "eslint-config-prettier": "^10.0.0",
@@ -45,6 +48,7 @@
   "dependencies": {
     "@fastify/autoload": "~6.0.3",
     "@fastify/sensible": "~6.0.2",
+    "@fastify/websocket": "^11.1.0",
     "fastify": "~5.2.1",
     "fastify-plugin": "~5.0.1"
   }
