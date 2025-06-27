@@ -1,0 +1,27 @@
+{
+    "name": "rdb",
+    "$schema": "../../node_modules/nx/schemas/project-schema.json",
+    "importPath": "@launch-pad/rdb",
+    "sourceRoot": "packages/rdb/src",
+    "projectType": "library",
+    "targets": {
+        "prisma": {
+        "command": "prisma",
+        "options": {
+            "cwd": "packages/rdb"
+        }
+        },
+        "migrate": {
+        "command": "prisma migrate dev",
+        "options": {
+            "cwd": "packages/rdb"
+        }
+        },
+        "generate-types": {
+        "command": "prisma generate",
+        "options": {
+            "cwd": "packages/rdb"
+        }
+        }
+    }
+  }
