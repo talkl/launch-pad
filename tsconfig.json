@@ -5,6 +5,9 @@
   "references": [
     {
       "path": "./websocket"
+    },
+    {
+      "path": "./packages/rdb"
     }
   ]
 }
